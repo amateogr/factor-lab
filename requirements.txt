@@ -1,0 +1,30 @@
+# Probado contra Python 3.12.3. Requiere Python >= 3.10 (sintaxis de genéricos
+# nativos en anotaciones de dataclass: tuple[str, ...], dict[str, int]).
+
+# Ingesta de datos (data_ingest/)
+requests>=2.31          # xbrl_tag_mapper.py, universe_selector.py
+yfinance==1.5.1         # returns_ingestor.py — API de yfinance cambia entre versiones
+                        # (ver nota de auto_adjust en returns_ingestor.py); fijar esta
+                        # versión evita romper _extract_adj_close silenciosamente.
+lxml>=5.0               # requerido por pd.read_html en universe_selector.py
+
+# Núcleo numérico / cross-sectional (factor_construct/, neutralize/)
+pandas==3.0.2           # el fix de .stack() en returns_ingestor.py asume el
+                        # comportamiento de pandas>=2.1; probado exacto en 3.0.2.
+numpy==2.4.4
+statsmodels==0.14.6     # RollingOLS (neutralizer.py)
+pyarrow==25.0.0         # caché Parquet (xbrl_tag_mapper.py, universe_selector.py,
+                        # run_pipeline.py)
+
+# Optimización (optimizer/)
+cvxpy==1.9.2            # cp.quad_form(..., assume_PSD=True) requiere esta firma
+scikit-learn==1.8.0     # sklearn.covariance.LedoitWolf
+
+# Research tearsheet (notebooks/)
+matplotlib==3.10.8
+seaborn==0.13.2         # patrón hue+dict en sns.barplot asume seaborn>=0.12
+nbformat>=5.10
+ipykernel>=6.29
+
+# Tests
+pytest==9.1.1
