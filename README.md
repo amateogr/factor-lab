@@ -18,6 +18,8 @@ diseñadas como dos mitades del mismo sistema, no como proyectos aislados.
 
 ## 1. Arquitectura del pipeline
 
+**⚠️ Nota de Ejecución:** La carpeta `reports/` está excluida del control de versiones. Antes de ejecutar el Jupyter Notebook (`qmj_tearsheet.ipynb`), es obligatorio correr `python src/run_pipeline.py` en la terminal para generar el archivo `optimal_weights.csv`.
+
 ```
 SEC EDGAR (XBRL companyfacts/frames)     yfinance (Adj Close)
         │                                        │
