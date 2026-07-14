@@ -61,7 +61,8 @@ factor-lab/
 │   │   ├── xbrl_tag_mapper.py         # fundamentals SEC EDGAR, fallback + point-in-time
 │   │   ├── returns_ingestor.py        # precios yfinance, retornos, panel largo
 │   │   ├── test_universe_selector.py
-│   │   └── test_returns_ingestor.py
+│   │   ├── test_returns_ingestor.py
+│   │   └── test_xbrl_tag_mapper.py
 │   ├── factor_construct/
 │   │   ├── factor_builder.py          # ROE, leverage, winsorización, z-score, qmj_score
 │   │   └── test_factor_builder.py
