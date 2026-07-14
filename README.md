@@ -227,9 +227,17 @@ explícitamente (logueado), nunca se rellenan con score o covarianza ficticios.
 
 ### Requisitos
 
+Python **3.10+** (el código usa genéricos nativos en anotaciones de dataclass:
+`tuple[str, ...]`, `dict[str, int]`).
+
 ```bash
-pip install pandas numpy statsmodels cvxpy scikit-learn yfinance pyarrow pytest
+pip install -r requirements.txt
 ```
+
+`requirements.txt` fija versiones exactas contra las que este proyecto fue probado
+— en particular `yfinance`, `pandas` y `seaborn` tienen comentarios inline explicando
+por qué la versión importa (cambios de API entre versiones que rompen silenciosamente
+partes específicas del pipeline si no se fijan).
 
 ### Pipeline completo
 
@@ -283,3 +291,9 @@ esperada.
 - [ ] Reporte de capacidad (AUM máximo antes de que el market impact destruya el edge).
 - [ ] Integración con `var-engine` para backtesting formal (Kupiec, Christoffersen) de la
       cartera resultante.
+
+---
+
+## Licencia
+
+MIT — ver [`LICENSE`](./LICENSE). Misma licencia que [`var-engine`](https://github.com/amateogr/var-engine).
