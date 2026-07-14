@@ -128,3 +128,17 @@ def test_beta_neutralize_nan_when_group_too_small():
                               window=30, min_group_size=3)
     # un solo activo por fecha -> nunca alcanza min_group_size=3
     assert out["score_beta_neutral"].isna().all()
+
+
+def test_residualize_cross_sectional_single_group_returns_series_not_wide_frame():
+    # regresión: DataFrameGroupBy.apply() con un solo grupo total puede devolver
+    # una fila ancha en vez de una columna -- este caso lo dispara (un solo periodo).
+    df = pd.DataFrame({
+        "period": ["P1"] * 6,
+        "score": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0],
+        "beta": [0.5, 0.7, 0.9, 1.1, 1.3, 1.5],
+    })
+    out = nz.residualize_cross_sectional(df, "score", "beta", min_group_size=3)
+    assert isinstance(out, pd.Series)
+    assert len(out) == 6
+    assert out.index.equals(df.index)
