@@ -296,4 +296,4 @@ esperada.
 
 ## Licencia
 
-MIT — ver [`LICENSE`](./LICENSE). Misma licencia que [`var-engine`](https://github.com/amateogr/var-engine).
+MIT — ver [`LICENSE.txt`](./LICENSE.txt). Misma licencia que [`var-engine`](https://github.com/amateogr/var-engine).
